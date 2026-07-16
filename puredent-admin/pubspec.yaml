@@ -1,0 +1,60 @@
+name: admin
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Inter + Plus Jakarta Sans, matching the website's fonts exactly.
+  google_fonts: ^6.2.1
+
+  # Used to upload dentist photos from gallery/camera.
+  image_picker: ^1.1.2
+
+  # Used to talk to the real Node/Express server.
+  http: ^1.2.2
+
+  # Detects the correct content-type for photo uploads (image_picker cache
+  # files often have no file extension for http's guesser to go on).
+  mime: ^2.0.0
+  http_parser: ^4.0.2
+
+  # Persists the admin's access token across app restarts.
+  shared_preferences: ^2.3.2
+
+  # Scans patient QR codes at reception for check-in.
+  mobile_scanner: 7.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+
