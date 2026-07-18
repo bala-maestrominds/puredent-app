@@ -4,7 +4,7 @@ class AppConfig {
 
   static const String apiBaseUrl = String.fromEnvironment(
     'API_BASE_URL',
-    defaultValue: 'http://10.239.146.78:5000/api', // Android emulator -> host machine
+    defaultValue: 'https://puredent-app.onrender.com/api', 
   );
 
   static const bool enableNetworkLogs = bool.fromEnvironment('ENABLE_NETWORK_LOGS', defaultValue: true);
