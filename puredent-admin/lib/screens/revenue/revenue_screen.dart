@@ -134,7 +134,7 @@ class _RevenueScreenState extends State<RevenueScreen> {
                                     children: [
                                       const Text('Total Revenue', style: TextStyle(fontSize: 11, color: AppColors.onSurfaceVariant, fontWeight: FontWeight.w600)),
                                       const SizedBox(height: 2),
-                                      Text('\$${report.total.toStringAsFixed(0)}', style: Theme.of(context).textTheme.headlineMedium),
+                                      Text('₹${report.total.toStringAsFixed(0)}', style: Theme.of(context).textTheme.headlineMedium),
                                     ],
                                   ),
                                 ),
@@ -178,9 +178,9 @@ class _RevenueScreenState extends State<RevenueScreen> {
                       // --- Quick stats row ---
                       Row(
                         children: [
-                          Expanded(child: _miniStat('Average', '\$${report.average.toStringAsFixed(0)}')),
+                          Expanded(child: _miniStat('Average', '₹${report.average.toStringAsFixed(0)}')),
                           const SizedBox(width: 10),
-                          Expanded(child: _miniStat('Best: ${report.maxLabel}', '\$${report.maxValue.toStringAsFixed(0)}')),
+                          Expanded(child: _miniStat('Best: ${report.maxLabel}', '₹${report.maxValue.toStringAsFixed(0)}')),
                         ],
                       ),
                       if (report.outstandingBalance > 0) ...[
@@ -209,7 +209,7 @@ class _RevenueScreenState extends State<RevenueScreen> {
                                 ),
                               ),
                               Text(
-                                '\$${report.outstandingBalance.toStringAsFixed(0)}',
+                                '₹${report.outstandingBalance.toStringAsFixed(0)}',
                                 style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 15, color: AppColors.primary),
                               ),
                             ],
@@ -310,7 +310,7 @@ class _RevenueScreenState extends State<RevenueScreen> {
                                             ),
                                           ),
                                           const SizedBox(width: 10),
-                                          Text('\$${s.amount.toStringAsFixed(0)}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
+                                          Text('₹${s.amount.toStringAsFixed(0)}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700)),
                                         ],
                                       ),
                                     ),
@@ -379,7 +379,7 @@ class _RevenueScreenState extends State<RevenueScreen> {
                                             ),
                                           ),
                                           const SizedBox(width: 8),
-                                          Text('\$${b.amount}', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 13.5, color: AppColors.primary)),
+                                          Text('₹${b.amount}', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 13.5, color: AppColors.primary)),
                                         ],
                                       ),
                                     ),

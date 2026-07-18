@@ -619,7 +619,7 @@ class _ContactFooter extends StatelessWidget {
           Text('123 Clinical Plaza, Medical District\nNew York, NY 10001',
               style: AppTypography.bodySm()),
           const SizedBox(height: 4),
-          Text('+1 (555) 123-4567', style: AppTypography.bodySm()),
+          Text('+91 98765 43210', style: AppTypography.bodySm()),
           const SizedBox(height: AppSpacing.lg),
           Row(
             children: [

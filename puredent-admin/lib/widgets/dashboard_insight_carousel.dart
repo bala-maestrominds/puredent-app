@@ -41,7 +41,7 @@ List<_Insight> _buildInsights(DashboardStats stats) {
     insights.add(_Insight(
       icon: Icons.trending_up_rounded,
       title: "Today's earnings",
-      message: '\$${stats.todayRevenue.total.toStringAsFixed(0)} collected so far today. Tap the income card to see the full breakdown.',
+      message: '₹${stats.todayRevenue.total.toStringAsFixed(0)} collected so far today. Tap the income card to see the full breakdown.',
     ));
   }
 

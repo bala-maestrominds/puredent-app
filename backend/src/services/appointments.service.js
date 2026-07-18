@@ -11,16 +11,11 @@ import {
 } from '../utils/appointmentTicket.js';
 import { createTransporter, buildAppointmentEmail } from '../utils/mailer.js';
 
-// The consultation fee is a flat, site-wide amount (not per-doctor/service).
-// When a patient pays "Consultation Fee Only", this is what's collected now,
-// and it's deducted from the total treatment cost to arrive at the balance
-// due after check-in.
 export const CONSULTATION_FEE = 100;
 
 async function createUniqueCode() {
   for (let attempt = 0; attempt < 5; attempt += 1) {
     const code = generateAppointmentCode();
-    // eslint-disable-next-line no-await-in-loop
     const existing = await Appointment.exists({ appointmentCode: code });
     if (!existing) return code;
   }
@@ -57,11 +52,6 @@ async function createAppointment(payload, userId = null) {
 
   const appointmentCode = await createUniqueCode();
   const verificationToken = signAppointmentCode(appointmentCode);
-
-  // --- Payment breakdown -----------------------------------------------
-  // The patient can either settle the full treatment cost now, or pay just
-  // the doctor's consultation fee and clear the remaining balance after
-  // the treatment (tracked via `balanceDue` for the admin dashboard).
   const totalAmount = service.priceFrom || 0;
   const consultationFee = Math.min(CONSULTATION_FEE, totalAmount);
   const paymentOption = payload.paymentOption || 'Full Payment';
@@ -69,9 +59,6 @@ async function createAppointment(payload, userId = null) {
     ? Math.min(consultationFee, totalAmount)
     : totalAmount;
 
-  // No real payment gateway is wired up yet -- appointments booked with "Pay at
-  // Clinic" stay pending, other methods are treated as paid at booking time
-  // (for whichever portion -- full or consultation-only -- was selected).
   const isPaidUpfront = Boolean(payload.paymentMethod) && payload.paymentMethod !== 'Pay at Clinic';
   const amountPaid = isPaidUpfront ? collectibleNow : 0;
   const balanceDue = Math.max(totalAmount - amountPaid, 0);
@@ -110,9 +97,6 @@ async function createAppointment(payload, userId = null) {
 
   const qrCodeDataUrl = await generateQrDataUrl(appointment);
 
-  // Email delivery must never block/fail the booking itself -- if SMTP isn't
-  // configured or the send fails, the appointment is still confirmed and the
-  // patient can still view/download the ticket from the confirmation screen.
   let emailSent = false;
   try {
     await sendAppointmentEmail(appointment);
@@ -217,9 +201,8 @@ async function getAppointmentPdf(id) {
   return { buffer, appointment };
 }
 
-// Ensures the requesting user is either the appointment's owner or an admin.
 function assertCanManage(appointment, requester) {
-  if (!requester) return; // internal/reception usage (no logged-in patient context)
+  if (!requester) return; 
   if (requester.role === 'admin') return;
   if (!appointment.user || appointment.user.toString() !== requester.id) {
     throw new ApiError(403, 'You do not have permission to manage this appointment.');
@@ -280,12 +263,6 @@ async function cancelAppointment(id, { reason } = {}, requester = null) {
   return appointment;
 }
 
-// Patient-facing: pay the outstanding balance online from the app (e.g. the
-// full treatment cost, or the remainder left after an earlier
-// consultation-fee-only payment). No real payment gateway is wired up yet,
-// so the "charge" is treated as successful immediately and the appointment
-// is updated/persisted right away -- this is what feeds the admin revenue
-// dashboard (which sums `amountPaid`).
 async function payBalance(id, { paymentMethod } = {}, requester = null) {
   const appointment = await Appointment.findById(id);
   if (!appointment) throw new ApiError(404, 'Appointment not found');
@@ -308,8 +285,7 @@ async function payBalance(id, { paymentMethod } = {}, requester = null) {
   return appointment;
 }
 
-// Admin-facing: reconcile the amount actually collected (e.g. once the
-// remaining balance is settled at/after the visit).
+
 async function updateAppointmentPayment(id, { paymentStatus, amountPaid }) {
   const appointment = await Appointment.findById(id);
   if (!appointment) throw new ApiError(404, 'Appointment not found');

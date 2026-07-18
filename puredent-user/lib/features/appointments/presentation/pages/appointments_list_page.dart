@@ -136,7 +136,7 @@ class _AppointmentTile extends StatelessWidget {
       case 'paid':
         return 'Paid';
       case 'partially_paid':
-        return 'Balance due \$${appointment.balanceDue.toStringAsFixed(2)}';
+        return 'Balance due ₹${appointment.balanceDue.toStringAsFixed(2)}';
       default:
         return 'Payment pending';
     }
@@ -223,7 +223,7 @@ class _AppointmentTile extends StatelessWidget {
                         children: [
                           const Text('Amount to pay'),
                           Text(
-                            '\$${appointment.balanceDue.toStringAsFixed(2)}',
+                            '₹${appointment.balanceDue.toStringAsFixed(2)}',
                             style: Theme.of(sheetContext)
                                 .textTheme
                                 .titleMedium
@@ -250,7 +250,7 @@ class _AppointmentTile extends StatelessWidget {
                     width: double.infinity,
                     child: FilledButton(
                       onPressed: () => Navigator.pop(sheetContext, true),
-                      child: Text('Pay \$${appointment.balanceDue.toStringAsFixed(2)}'),
+                      child: Text('Pay ₹${appointment.balanceDue.toStringAsFixed(2)}'),
                     ),
                   ),
                 ],
@@ -370,7 +370,7 @@ class _AppointmentTile extends StatelessWidget {
                   child: FilledButton.icon(
                     onPressed: () => _showPayOnlineSheet(context),
                     icon: const Icon(Icons.credit_card_rounded, size: 18),
-                    label: Text('Pay Online · \$${appointment.balanceDue.toStringAsFixed(2)}'),
+                    label: Text('Pay Online · ₹${appointment.balanceDue.toStringAsFixed(2)}'),
                   ),
                 )
               else if (appointment.isConsultationOnly && !appointment.isCheckedIn)

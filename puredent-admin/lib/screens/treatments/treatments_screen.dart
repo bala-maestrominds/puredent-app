@@ -182,7 +182,7 @@ class _TreatmentsScreenState extends State<TreatmentsScreen> {
                                       ),
                                       const SizedBox(height: 8),
                                       Text(
-                                        t.priceFrom != null ? '\$${t.priceFrom}' : 'Ask clinic',
+                                        t.priceFrom != null ? '₹${t.priceFrom}' : 'Ask clinic',
                                         style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 18, color: AppColors.primary),
                                       ),
                                     ],
@@ -379,7 +379,7 @@ class _ServiceFormSheetState extends State<_ServiceFormSheet> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _label('Price (\$)'),
+                      _label('Price (₹)'),
                       TextField(
                         controller: _priceController,
                         keyboardType: const TextInputType.numberWithOptions(decimal: true),

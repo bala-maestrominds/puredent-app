@@ -14,7 +14,7 @@ import {
 
 const router = Router();
 
-// Slow down brute-force / credential-stuffing attempts on auth endpoints.
+// Rate-limit
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 30,
@@ -23,12 +23,12 @@ const authLimiter = rateLimit({
   message: { error: 'Too many attempts. Please try again later.' },
 });
 
-// --- Public ---
+// --- Public Route ---
 router.post('/register', authLimiter, validateRequest(registerSchema), asyncHandler(authController.register));
 router.post('/login', authLimiter, validateRequest(loginSchema), asyncHandler(authController.login));
 router.post('/refresh', authLimiter, validateRequest(refreshSchema), asyncHandler(authController.refresh));
 
-// --- Authenticated ---
+// --- Authenticated Route ---
 router.post('/logout', requireAuth, asyncHandler(authController.logout));
 router.get('/me', requireAuth, asyncHandler(authController.me));
 router.patch('/me', requireAuth, validateRequest(updateProfileSchema), asyncHandler(authController.updateMe));

@@ -215,19 +215,19 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> {
       case 'paid':
         color = AppColors.primary;
         icon = Icons.check_circle_rounded;
-        label = 'Paid in full · \$${a.amountPaid.toStringAsFixed(2)}';
+        label = 'Paid in full · ₹${a.amountPaid.toStringAsFixed(2)}';
         break;
       case 'partially_paid':
         color = AppColors.tertiary;
         icon = Icons.hourglass_bottom_rounded;
         label = a.isConsultationFeeOnly
-            ? 'Consultation fee paid · \$${a.balanceDue.toStringAsFixed(2)} due after check-in'
-            : 'Partially paid · \$${a.balanceDue.toStringAsFixed(2)} balance due';
+            ? 'Consultation fee paid · ₹${a.balanceDue.toStringAsFixed(2)} due after check-in'
+            : 'Partially paid · ₹${a.balanceDue.toStringAsFixed(2)} balance due';
         break;
       default:
         color = AppColors.outline;
         icon = Icons.payments_outlined;
-        label = 'Payment pending · \$${a.amount.toStringAsFixed(2)} due';
+        label = 'Payment pending · ₹${a.amount.toStringAsFixed(2)} due';
     }
 
     return Row(

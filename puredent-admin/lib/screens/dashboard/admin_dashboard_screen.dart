@@ -488,7 +488,7 @@ class _TodayIncomeCardState extends State<_TodayIncomeCard> {
                         Text(
                           widget.loading
                               ? '…'
-                              : '\$${(revenue?.total ?? 0).toStringAsFixed(0)}',
+                              : '₹${(revenue?.total ?? 0).toStringAsFixed(0)}',
                           style: Theme.of(context).textTheme.headlineSmall,
                         ),
                       ],

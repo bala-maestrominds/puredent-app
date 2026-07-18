@@ -14,7 +14,7 @@ class PureDentAdminApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PureDent Admin',
+      title: 'Admin',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       home: const _SessionGate(),

@@ -1,0 +1,231 @@
+# ==========================================
+# PureDent Admin App
+# ==========================================
+
+# Miscellaneous
+puredent-admin/**/*.class
+puredent-admin/**/*.log
+puredent-admin/**/*.pyc
+puredent-admin/**/*.swp
+puredent-admin/**/.DS_Store
+puredent-admin/.atom/
+puredent-admin/.build/
+puredent-admin/.buildlog/
+puredent-admin/.history/
+puredent-admin/.svn/
+puredent-admin/.swiftpm/
+puredent-admin/migrate_working_dir/
+
+# IDEs (IntelliJ, VS Code)
+puredent-admin/**/*.iml
+puredent-admin/**/*.ipr
+puredent-admin/**/*.iws
+puredent-admin/.idea/
+puredent-admin/.vscode/
+
+# Flutter / Dart / Pub
+puredent-admin/**/doc/api/
+puredent-admin/**/ios/Flutter/.last_build_id
+puredent-admin/.dart_tool/
+puredent-admin/.packages
+puredent-admin/.pub-cache/
+puredent-admin/.pub/
+puredent-admin/build/
+puredent-admin/coverage/
+puredent-admin/*.g.dart
+puredent-admin/*.freezed.dart
+puredent-admin/.fvm/
+puredent-admin/.flutter-plugins
+puredent-admin/.flutter-plugins-dependencies
+puredent-admin/.flutter-versions
+
+# Build Outputs & Obfuscation
+puredent-admin/app.*.symbols
+puredent-admin/app.*.map.json
+
+# Android
+puredent-admin/android/app/debug/
+puredent-admin/android/app/profile/
+puredent-admin/android/app/release/
+puredent-admin/android/**/gradle-wrapper.jar
+puredent-admin/android/.gradle/
+puredent-admin/android/captures/
+puredent-admin/android/gradlew
+puredent-admin/android/gradlew.bat
+puredent-admin/android/local.properties
+puredent-admin/android/**/GeneratedPluginRegistrant.java
+puredent-admin/android/key.properties
+puredent-admin/**/*.keystore
+puredent-admin/**/*.jks
+
+# iOS
+puredent-admin/ios/**/*.mode1v3
+puredent-admin/ios/**/*.mode2v3
+puredent-admin/ios/**/*.moved-aside
+puredent-admin/ios/**/*.pbxuser
+puredent-admin/ios/**/*.perspectivev3
+puredent-admin/ios/**/*sync/
+puredent-admin/ios/**/.sconsign.dblite
+puredent-admin/ios/**/.tags*
+puredent-admin/ios/**/.vagrant/
+puredent-admin/ios/**/DerivedData/
+puredent-admin/ios/**/Icon?
+puredent-admin/ios/**/Pods/
+puredent-admin/ios/**/.symlinks/
+puredent-admin/ios/**/profile/
+puredent-admin/ios/**/xcuserdata/
+puredent-admin/ios/.generated/
+puredent-admin/ios/Flutter/App.framework
+puredent-admin/ios/Flutter/Flutter.framework
+puredent-admin/ios/Flutter/Flutter.podspec
+puredent-admin/ios/Flutter/Generated.xcconfig
+puredent-admin/ios/Flutter/ephemeral/
+puredent-admin/ios/Flutter/app.flx
+puredent-admin/ios/Flutter/app.zip
+puredent-admin/ios/Flutter/flutter_assets/
+puredent-admin/ios/Flutter/flutter_export_environment.sh
+puredent-admin/ios/ServiceDefinitions.json
+puredent-admin/ios/Runner/GeneratedPluginRegistrant.*
+
+# Desktop & Web Plugins
+puredent-admin/**/GeneratedPluginRegistrant.*
+puredent-admin/macos/Flutter/GeneratedPluginRegistrant.swift
+puredent-admin/macos/Flutter/ephemeral/
+puredent-admin/linux/flutter/generated_plugin_registrant.cc
+puredent-admin/linux/flutter/generated_plugin_registrant.h
+puredent-admin/linux/flutter/generated_plugins.cmake
+puredent-admin/windows/flutter/generated_plugin_registrant.cc
+puredent-admin/windows/flutter/generated_plugin_registrant.h
+puredent-admin/windows/flutter/generated_plugins.cmake
+puredent-admin/web/.dart_tool/
+
+# Secrets & Environment
+puredent-admin/.env
+puredent-admin/.env.local
+puredent-admin/*.env
+
+# Exceptions
+!puredent-admin/**/ios/**/default.mode1v3
+!puredent-admin/**/ios/**/default.mode2v3
+!puredent-admin/**/ios/**/default.pbxuser
+!puredent-admin/**/ios/**/default.perspectivev3
+!puredent-admin/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+
+# ==========================================
+# PureDent User App
+# ==========================================
+
+# Miscellaneous
+puredent-user/**/*.class
+puredent-user/**/*.log
+puredent-user/**/*.pyc
+puredent-user/**/*.swp
+puredent-user/**/.DS_Store
+puredent-user/.atom/
+puredent-user/.build/
+puredent-user/.buildlog/
+puredent-user/.history/
+puredent-user/.svn/
+puredent-user/.swiftpm/
+puredent-user/migrate_working_dir/
+
+# IDEs (IntelliJ, VS Code)
+puredent-user/**/*.iml
+puredent-user/**/*.ipr
+puredent-user/**/*.iws
+puredent-user/.idea/
+puredent-user/.vscode/
+
+# Flutter / Dart / Pub
+puredent-user/**/doc/api/
+puredent-user/**/ios/Flutter/.last_build_id
+puredent-user/.dart_tool/
+puredent-user/.packages
+puredent-user/.pub-cache/
+puredent-user/.pub/
+puredent-user/build/
+puredent-user/coverage/
+puredent-user/*.g.dart
+puredent-user/*.freezed.dart
+puredent-user/.fvm/
+puredent-user/.flutter-plugins
+puredent-user/.flutter-plugins-dependencies
+puredent-user/.flutter-versions
+
+# Build Outputs & Obfuscation
+puredent-user/app.*.symbols
+puredent-user/app.*.map.json
+
+# Android
+puredent-user/android/app/debug/
+puredent-user/android/app/profile/
+puredent-user/android/app/release/
+puredent-user/android/**/gradle-wrapper.jar
+puredent-user/android/.gradle/
+puredent-user/android/captures/
+puredent-user/android/gradlew
+puredent-user/android/gradlew.bat
+puredent-user/android/local.properties
+puredent-user/android/**/GeneratedPluginRegistrant.java
+puredent-user/android/key.properties
+puredent-user/**/*.keystore
+puredent-user/**/*.jks
+
+# iOS
+puredent-user/ios/**/*.mode1v3
+puredent-user/ios/**/*.mode2v3
+puredent-user/ios/**/*.moved-aside
+puredent-user/ios/**/*.pbxuser
+puredent-user/ios/**/*.perspectivev3
+puredent-user/ios/**/*sync/
+puredent-user/ios/**/.sconsign.dblite
+puredent-user/ios/**/.tags*
+puredent-user/ios/**/.vagrant/
+puredent-user/ios/**/DerivedData/
+puredent-user/ios/**/Icon?
+puredent-user/ios/**/Pods/
+puredent-user/ios/**/.symlinks/
+puredent-user/ios/**/profile/
+puredent-user/ios/**/xcuserdata/
+puredent-user/ios/.generated/
+puredent-user/ios/Flutter/App.framework
+puredent-user/ios/Flutter/Flutter.framework
+puredent-user/ios/Flutter/Flutter.podspec
+puredent-user/ios/Flutter/Generated.xcconfig
+puredent-user/ios/Flutter/ephemeral/
+puredent-user/ios/Flutter/app.flx
+puredent-user/ios/Flutter/app.zip
+puredent-user/ios/Flutter/flutter_assets/
+puredent-user/ios/Flutter/flutter_export_environment.sh
+puredent-user/ios/ServiceDefinitions.json
+puredent-user/ios/Runner/GeneratedPluginRegistrant.*
+
+# Desktop & Web Plugins
+puredent-user/**/GeneratedPluginRegistrant.*
+puredent-user/macos/Flutter/GeneratedPluginRegistrant.swift
+puredent-user/macos/Flutter/ephemeral/
+puredent-user/linux/flutter/generated_plugin_registrant.cc
+puredent-user/linux/flutter/generated_plugin_registrant.h
+puredent-user/linux/flutter/generated_plugins.cmake
+puredent-user/windows/flutter/generated_plugin_registrant.cc
+puredent-user/windows/flutter/generated_plugin_registrant.h
+puredent-user/windows/flutter/generated_plugins.cmake
+puredent-user/web/.dart_tool/
+
+# Secrets & Environment
+puredent-user/.env
+puredent-user/.env.local
+puredent-user/*.env
+
+# Exceptions
+!puredent-user/**/ios/**/default.mode1v3
+!puredent-user/**/ios/**/default.mode2v3
+!puredent-user/**/ios/**/default.pbxuser
+!puredent-user/**/ios/**/default.perspectivev3
+!puredent-user/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+
+
+#backend
+backend/node_modules
+backend/.env

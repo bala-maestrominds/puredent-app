@@ -41,17 +41,18 @@ class AppRouter {
     redirect: (context, state) {
       final authState = _authBloc.state;
       final isSplash = state.matchedLocation == '/splash';
-      // ignore: unused_local_variable
-      final isAuthRoute = state.matchedLocation == '/login' || state.matchedLocation == '/register';
 
-      // Wait for the initial session check before making any redirect
-      // decisions, otherwise we'd bounce a logged-in user to /login for a
-      // frame while restoreSession() is still resolving.
+      final isBookingRoute = state.matchedLocation.startsWith('/booking');
+
       if (authState is AuthInitial || authState is AuthChecking) {
         return isSplash ? null : null;
       }
       if (isSplash) {
         return '/home';
+      }
+
+      if (isBookingRoute && authState is! AuthAuthenticated) {
+        return '/login?redirect=${Uri.encodeComponent(state.uri.toString())}';
       }
       return null;
     },
@@ -64,8 +65,6 @@ class AppRouter {
       GoRoute(path: '/about', builder: (context, state) => const AboutUsScreen()),
       GoRoute(path: '/contact', builder: (context, state) => const ContactPage()),
 
-      // --- Booking flow (wrapped in its own BookingBloc so the draft
-      // persists across steps but resets once you leave the flow) ---
       ShellRoute(
         builder: (context, state, child) => BlocProvider(
           create: (_) => getIt<BookingBloc>(),
@@ -128,9 +127,7 @@ class AppRouter {
   );
 }
 
-/// Bridges a [Stream] (the AuthBloc's state stream) into a [Listenable] so
-/// go_router re-evaluates `redirect` whenever auth state changes (e.g. a
-/// forced logout from an expired session).
+
 class _GoRouterRefreshStream extends ChangeNotifier {
   _GoRouterRefreshStream(Stream<dynamic> stream) {
     notifyListeners();

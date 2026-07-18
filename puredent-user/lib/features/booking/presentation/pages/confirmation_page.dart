@@ -60,9 +60,9 @@ class ConfirmationPage extends StatelessWidget {
                       _Row(label: 'Date', value: appointment.date),
                       _Row(label: 'Time', value: appointment.time),
                       _Row(label: 'Status', value: appointment.status),
-                      _Row(label: 'Paid Now', value: '\$${appointment.amountPaid.toStringAsFixed(2)}'),
+                      _Row(label: 'Paid Now', value: '₹${appointment.amountPaid.toStringAsFixed(2)}'),
                       if (appointment.balanceDue > 0)
-                        _Row(label: 'Balance Due at Treatment', value: '\$${appointment.balanceDue.toStringAsFixed(2)}'),
+                        _Row(label: 'Balance Due at Treatment', value: '₹${appointment.balanceDue.toStringAsFixed(2)}'),
                     ],
                   ),
                 ),

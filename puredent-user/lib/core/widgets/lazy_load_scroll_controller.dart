@@ -1,8 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-/// Attaches a listener to [controller] that invokes [onLoadMore] once the
-/// user scrolls within [threshold] pixels of the bottom — the standard
-/// "lazy load next page" pattern for long lists.
+
 class LazyLoadScrollController {
   LazyLoadScrollController({
     required this.controller,
