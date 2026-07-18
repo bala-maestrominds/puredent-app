@@ -10,16 +10,7 @@ import '../storage/token_storage.dart';
 import '../utils/app_config.dart';
 import 'auth_event_bus.dart';
 
-/// Builds and configures the single [Dio] instance used across the app.
-///
-/// Responsibilities:
-/// - attaches the bearer access token to every request
-/// - transparently refreshes the access token on a 401 and retries the
-///   original request exactly once (queues concurrent 401s so we only
-///   refresh a single time)
-/// - retries idempotent GET requests on transient network/timeout errors
-///   with exponential backoff
-/// - normalizes every error into a [Failure] via [DioException.error]
+
 class DioClient {
   DioClient({
     required TokenStorage tokenStorage,

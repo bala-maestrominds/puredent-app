@@ -71,7 +71,7 @@ class _ServiceDetailPageState extends State<ServiceDetailPage> {
                         children: [
                           _InfoChip(
                             icon: Icons.payments_outlined,
-                            label: service.priceFrom != null ? 'From \$${service.priceFrom!.toStringAsFixed(0)}' : 'Contact us',
+                            label: service.priceFrom != null ? 'From ₹${service.priceFrom!.toStringAsFixed(0)}' : 'Contact us',
                           ),
                           _InfoChip(icon: Icons.schedule_outlined, label: '${service.durationMinutes} min'),
                           _InfoChip(icon: Icons.category_outlined, label: service.category),

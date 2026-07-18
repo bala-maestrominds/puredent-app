@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-
 import '../theme/app_colors.dart';
 import '../theme/app_spacing.dart';
 import '../utils/app_config.dart';
 import '../utils/debouncer.dart';
 
-/// Search field that only calls [onChanged] after the user has paused
-/// typing for [AppConfig.searchDebounce] — prevents firing a filter/rebuild
-/// (or a network call, if the backend later grows server-side search) on
-/// every keystroke.
 class DebouncedSearchField extends StatefulWidget {
   const DebouncedSearchField({super.key, required this.hint, required this.onChanged});
 

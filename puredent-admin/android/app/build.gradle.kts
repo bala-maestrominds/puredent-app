@@ -25,12 +25,26 @@ android {
         versionName = flutter.versionName
     }
 
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
-        }
+    // buildTypes {
+    //     release {
+    //         // TODO: Add your own signing config for the release build.
+    //         // Signing with the debug keys for now, so `flutter run --release` works.
+    //         signingConfig = signingConfigs.getByName("debug")
+    //     }
+    // }
+
+        buildTypes {
+            release {
+                // Signing with the debug keys for now, so `flutter run --release` works.
+                signingConfig = signingConfigs.getByName("debug")
+
+                isMinifyEnabled = true
+                isShrinkResources = true
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            }
     }
 }
 
@@ -42,4 +56,12 @@ kotlin {
 
 flutter {
     source = "../.."
+}
+
+dependencies {
+    // Bundle the ML Kit barcode-scanning model directly into the APK instead
+    // of relying on Play Core's dynamic/on-demand module delivery, which
+    // fails on sideloaded (non-Play-Store) release APKs and causes a null
+    // object reference when mobile_scanner tries to start the camera.
+    implementation("com.google.mlkit:barcode-scanning:17.3.0")
 }

@@ -18,7 +18,7 @@ async function seed() {
       description: 'Titanium dental implants that replace missing teeth with a strong, natural-looking solution.',
       priceFrom: 1200,
       durationMinutes: 90,
-      imageUrl: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://unsplash.com/photos/dental-implant-model-with-teeth-W9YEY6G8LVM?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Permanent', 'Natural look', 'Lifetime durability'],
       process: [
         { step: 1, title: 'Consultation', description: 'Detailed imaging and treatment planning.' },
@@ -34,7 +34,7 @@ async function seed() {
       description: 'Professional whitening treatment that removes stains and brightens teeth by several shades.',
       priceFrom: 250,
       durationMinutes: 45,
-      imageUrl: 'https://images.unsplash.com/photo-1475503572774-15a45e5d60b9?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://unsplash.com/photos/young-woman-having-teeth-examined-by-dentist-in-dental-clinic-teeth-check-up-and-healthy-teeth-concept-IO1v90fDnek?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Fast results', 'Non-invasive', 'Long-lasting brightness'],
       process: [
         { step: 1, title: 'Shade assessment', description: 'Check current tooth shade and suitability.' },
@@ -50,7 +50,7 @@ async function seed() {
       description: 'Routine cleaning removes plaque, tartar, and helps prevent gum disease.',
       priceFrom: 80,
       durationMinutes: 30,
-      imageUrl: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/3958092/pexels-photo-3958092.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Prevents cavities', 'Freshens breath', 'Quick & painless'],
       process: [
         { step: 1, title: 'Examination', description: 'Check teeth and gums for early issues.' },
@@ -66,7 +66,7 @@ async function seed() {
       description: 'Removes infected pulp, disinfects canals, and restores the tooth.',
       priceFrom: 450,
       durationMinutes: 90,
-      imageUrl: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://pixabay.com/images/download/ales_kartal-dentist-1864921_1920.jpg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Saves natural tooth', 'Pain relief', 'High success rate'],
       process: [
         { step: 1, title: 'Diagnosis', description: 'X-ray and assessment of the infected tooth.' },
@@ -82,7 +82,7 @@ async function seed() {
       description: 'Custom ceramic crowns restore strength, function, and appearance.',
       priceFrom: 650,
       durationMinutes: 75,
-      imageUrl: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/12712256/pexels-photo-12712256.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Restores strength', 'Natural appearance', 'Durable material'],
       process: [
         { step: 1, title: 'Tooth preparation', description: 'Shape the tooth to receive the crown.' },
@@ -98,7 +98,7 @@ async function seed() {
       description: 'Thin porcelain shells placed over teeth for a beautiful smile makeover.',
       priceFrom: 900,
       durationMinutes: 120,
-      imageUrl: 'https://images.unsplash.com/photo-1579684389782-64d84b5e9053?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/6627572/pexels-photo-6627572.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Stain resistant', 'Natural translucency', 'Long-lasting'],
       process: [
         { step: 1, title: 'Smile design', description: 'Plan shape, size, and shade with the patient.' },
@@ -114,7 +114,7 @@ async function seed() {
       description: 'Consultation to evaluate bite alignment and recommend treatment options.',
       priceFrom: 100,
       durationMinutes: 40,
-      imageUrl: 'https://images.unsplash.com/photo-1513224502586-d1e602410265?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/6528908/pexels-photo-6528908.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Personalized plan', 'No obligation', 'Expert assessment'],
       process: [
         { step: 1, title: 'Bite assessment', description: 'Evaluate alignment and jaw structure.' },
@@ -130,7 +130,7 @@ async function seed() {
       description: 'Custom clear aligners designed to gradually straighten teeth.',
       priceFrom: 950,
       durationMinutes: 60,
-      imageUrl: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/28407748/pexels-photo-28407748.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Nearly invisible', 'Removable', 'Comfortable fit'],
       process: [
         { step: 1, title: 'Digital scan', description: '3D scan to map your teeth movement.' },
@@ -146,7 +146,7 @@ async function seed() {
       description: 'Simple and surgical tooth extraction procedures with local anesthesia.',
       priceFrom: 200,
       durationMinutes: 45,
-      imageUrl: 'https://images.unsplash.com/photo-1606811991618-4486d14f3f99?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/6627559/pexels-photo-6627559.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Fast pain relief', 'Local anesthesia', 'Prevents further damage'],
       process: [
         { step: 1, title: 'Assessment', description: 'X-ray to plan the safest extraction approach.' },
@@ -162,7 +162,7 @@ async function seed() {
       description: 'Routine dental examination, cleaning, and preventive treatments for children.',
       priceFrom: 90,
       durationMinutes: 30,
-      imageUrl: 'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/6502542/pexels-photo-6502542.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Kid-friendly care', 'Early problem detection', 'Builds healthy habits'],
       process: [
         { step: 1, title: 'Friendly welcome', description: 'A relaxed, fun introduction to the clinic.' },
@@ -178,7 +178,7 @@ async function seed() {
       description: 'Emergency care for severe tooth pain, broken teeth, infections, and trauma.',
       priceFrom: 180,
       durationMinutes: 60,
-      imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/14624608/pexels-photo-14624608.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Same-day availability', 'Rapid pain relief', '24/7 triage advice'],
       process: [
         { step: 1, title: 'Immediate triage', description: 'Quick phone or in-person assessment of urgency.' },
@@ -194,7 +194,7 @@ async function seed() {
       description: 'Deep scaling and root planing to treat gum disease and maintain oral health.',
       priceFrom: 350,
       durationMinutes: 60,
-      imageUrl: 'https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/5622010/pexels-photo-5622010.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Treats gum disease', 'Reduces inflammation', 'Protects tooth roots'],
       process: [
         { step: 1, title: 'Periodontal exam', description: 'Measure gum pockets and assess gum health.' },
@@ -210,7 +210,7 @@ async function seed() {
       description: 'Comprehensive consultation to create a customized cosmetic dentistry treatment plan.',
       priceFrom: 150,
       durationMinutes: 45,
-      imageUrl: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/12635375/pexels-photo-12635375.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Tailored to you', 'No-pressure planning', 'Combines multiple treatments'],
       process: [
         { step: 1, title: 'Goals discussion', description: 'Understand what you want to change about your smile.' },
@@ -226,7 +226,7 @@ async function seed() {
       description: 'Composite fillings restore decayed teeth while maintaining a natural appearance.',
       priceFrom: 120,
       durationMinutes: 40,
-      imageUrl: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/5622016/pexels-photo-5622016.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Tooth-colored', 'Same-day treatment', 'Preserves healthy tooth'],
       process: [
         { step: 1, title: 'Numb & clean', description: 'Numb the area and remove decayed tissue.' },
@@ -242,7 +242,7 @@ async function seed() {
       description: 'Surgical extraction of wisdom teeth to prevent pain and future complications.',
       priceFrom: 500,
       durationMinutes: 90,
-      imageUrl: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&auto=format&fit=crop&q=60',
+      imageUrl: 'https://images.pexels.com/photos/6627559/pexels-photo-6627559.jpeg?w=800&auto=format&fit=crop&q=60',
       keyBenefits: ['Prevents crowding', 'Reduces infection risk', 'Sedation options available'],
       process: [
         { step: 1, title: 'Imaging & planning', description: '3D imaging to map tooth position and roots.' },

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-/// Shared bottom-nav shell for the 4 primary tabs. Each tab keeps its own
-/// Navigator via [StatefulNavigationShell] so switching tabs preserves each
-/// tab's scroll position / state instead of rebuilding from scratch.
+
 class RootShell extends StatelessWidget {
   const RootShell({super.key, required this.navigationShell});
 

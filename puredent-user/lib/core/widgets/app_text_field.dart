@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -14,6 +15,8 @@ class AppTextField extends StatefulWidget {
     this.textInputAction,
     this.onChanged,
     this.autofillHints,
+    this.suffixIcon,
+    this.inputFormatters,
   });
 
   final String label;
@@ -27,6 +30,8 @@ class AppTextField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final void Function(String)? onChanged;
   final Iterable<String>? autofillHints;
+  final IconButton? suffixIcon;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -51,15 +56,20 @@ class _AppTextFieldState extends State<AppTextField> {
           textInputAction: widget.textInputAction,
           onChanged: widget.onChanged,
           autofillHints: widget.autofillHints,
+          inputFormatters: widget.inputFormatters,
           decoration: InputDecoration(
             hintText: widget.hint,
             prefixIcon: widget.prefixIcon != null ? Icon(widget.prefixIcon, size: 20) : null,
             suffixIcon: widget.obscureText
                 ? IconButton(
-                    icon: Icon(_obscured ? Icons.visibility_outlined : Icons.visibility_off_outlined, size: 20),
+                    icon: Icon(
+                        _obscured
+                            ? Icons.visibility_outlined
+                            : Icons.visibility_off_outlined,
+                        size: 20),
                     onPressed: () => setState(() => _obscured = !_obscured),
                   )
-                : null,
+                : widget.suffixIcon,
           ),
         ),
       ],

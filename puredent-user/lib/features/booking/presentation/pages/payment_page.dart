@@ -89,7 +89,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 _PaymentOptionCard(
                   title: 'Pay full amount now',
                   subtitle:
-                      'Settle the entire treatment cost (\$${state.servicePrice.toStringAsFixed(2)}) today.',
+                      'Settle the entire treatment cost (₹${state.servicePrice.toStringAsFixed(2)}) today.',
                   icon: Icons.payments_rounded,
                   selected: state.paymentOption == kFullPayment,
                   onTap: () => context
@@ -100,8 +100,8 @@ class _PaymentPageState extends State<PaymentPage> {
                 _PaymentOptionCard(
                   title: 'Pay consultation fee only',
                   subtitle: state.consultationFee > 0
-                      ? 'Pay just \$${state.consultationFee.toStringAsFixed(2)} now. The remaining '
-                          '\$${(state.servicePrice - state.consultationFee).clamp(0, double.infinity).toStringAsFixed(2)} '
+                      ? 'Pay just ₹${state.consultationFee.toStringAsFixed(2)} now. The remaining '
+                          '₹${(state.servicePrice - state.consultationFee).clamp(0, double.infinity).toStringAsFixed(2)} '
                           'is due after your treatment.'
                       : 'Pay only the consultation fee now; the treatment balance is settled after your visit.',
                   icon: Icons.medical_services_outlined,
@@ -148,7 +148,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 const SizedBox(height: AppSpacing.lg),
                 AppPrimaryButton(
                   label:
-                      'Pay \$${state.amountDueNow.toStringAsFixed(2)} & Confirm',
+                      'Pay ₹${state.amountDueNow.toStringAsFixed(2)} & Confirm',
                   isLoading: state.status == BookingStatus.submitting,
                   onPressed: _confirm,
                 ),
@@ -354,12 +354,12 @@ class _AmountDueCard extends StatelessWidget {
           children: [
             _Row(
                 label: 'Amount due now',
-                value: '\$${state.amountDueNow.toStringAsFixed(2)}',
+                value: '₹${state.amountDueNow.toStringAsFixed(2)}',
                 emphasize: true),
             if (state.isConsultationOnly)
               _Row(
                   label: 'Balance after treatment',
-                  value: '\$${state.balanceDue.toStringAsFixed(2)}'),
+                  value: '₹${state.balanceDue.toStringAsFixed(2)}'),
           ],
         ),
       ),

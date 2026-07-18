@@ -2,9 +2,7 @@ import jwt from 'jsonwebtoken';
 import { env } from '../config/env.js';
 import { ApiError } from '../utils/ApiError.js';
 
-/**
- * Requires a valid access token. Populates req.user = { id, role }.
- */
+
 export function requireAuth(req, res, next) {
   const header = req.headers.authorization || '';
   const [scheme, token] = header.split(' ');
@@ -22,10 +20,7 @@ export function requireAuth(req, res, next) {
   }
 }
 
-/**
- * Attaches req.user if a valid token is present, but never rejects the request.
- * Useful for endpoints that behave differently for guests vs logged-in users.
- */
+
 export function attachUserIfPresent(req, res, next) {
   const header = req.headers.authorization || '';
   const [scheme, token] = header.split(' ');

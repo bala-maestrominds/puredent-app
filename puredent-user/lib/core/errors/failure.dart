@@ -1,5 +1,4 @@
-/// Base failure type surfaced to the UI layer. Kept deliberately small and
-/// serializable-free so Bloc states can carry it directly.
+
 class Failure {
   final String message;
   final int? statusCode;

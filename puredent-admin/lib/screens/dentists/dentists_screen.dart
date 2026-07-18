@@ -302,7 +302,7 @@ class _DentistDetailSheet extends StatelessWidget {
                 const SizedBox(width: 10),
                 Expanded(child: _statBox('Rating', '⭐ ${dentist.rating}')),
                 const SizedBox(width: 10),
-                Expanded(child: _statBox('Fee', '\$${dentist.consultationFee}')),
+                Expanded(child: _statBox('Fee', '₹${dentist.consultationFee}')),
               ],
             ),
             const SizedBox(height: 20),

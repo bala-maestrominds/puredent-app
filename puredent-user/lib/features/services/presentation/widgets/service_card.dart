@@ -42,7 +42,7 @@ class ServiceCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        service.priceFrom != null ? 'From \$${service.priceFrom!.toStringAsFixed(0)}' : 'Contact us',
+                        service.priceFrom != null ? 'From ₹${service.priceFrom!.toStringAsFixed(0)}' : 'Contact us',
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.primary, fontWeight: FontWeight.w600),
                       ),
                       Text('${service.durationMinutes} min', style: Theme.of(context).textTheme.bodySmall),

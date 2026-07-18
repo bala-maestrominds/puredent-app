@@ -5,7 +5,7 @@ class ApiConfig {
   ApiConfig._();
 
   static const String? _lanIp =
-      '192.168.1.4'; // <-- replace with YOUR computer's LAN IP
+      '10.239.146.78'; // <-- computer's LAN IP
 
   static const int _port = 5000;
 

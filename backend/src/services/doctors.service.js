@@ -62,11 +62,6 @@ async function getAvailability(doctorId, dateStr) {
     }
   }
 
-  // BUGFIX: previously this only returned the doctor's working-hour grid and
-  // never checked which of those slots were already booked, so two patients
-  // could both be offered (and book) the exact same slot. Filter out any
-  // slot that already has a live (non-cancelled) appointment for this
-  // doctor on this date.
   const bookedAppointments = await Appointment.find({
     doctor: doctorId,
     date: dateStr,
@@ -74,7 +69,16 @@ async function getAvailability(doctorId, dateStr) {
   }).select('time');
   const bookedTimes = new Set(bookedAppointments.map((a) => a.time));
 
-  return slots.filter((slot) => !bookedTimes.has(slot));
+  let availableSlots = slots.filter((slot) => !bookedTimes.has(slot));
+
+  const now = new Date();
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  if (dateStr === todayStr) {
+    const nowMinutes = now.getHours() * 60 + now.getMinutes();
+    availableSlots = availableSlots.filter((slot) => timeToMinutes(slot) > nowMinutes);
+  }
+
+  return availableSlots;
 }
 
 function timeToMinutes(hhmm) {
