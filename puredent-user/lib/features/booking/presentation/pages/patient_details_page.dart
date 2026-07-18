@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -91,11 +92,20 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                 const SizedBox(height: 16),
                 AppTextField(
                   label: 'Phone',
-                  hint: '+1 (555) 000-0000',
+                  hint: '9876543210',
                   controller: _phoneController,
                   keyboardType: TextInputType.phone,
                   prefixIcon: Icons.phone_outlined,
-                  validator: (v) => (v == null || v.trim().length < 6) ? 'Enter a valid phone number' : null,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                    LengthLimitingTextInputFormatter(10),
+                  ],
+                  validator: (v) {
+                    final value = v?.trim() ?? '';
+                    if (value.isEmpty) return 'Phone number is required';
+                    if (!RegExp(r'^\d{10}$').hasMatch(value)) return 'Enter a valid 10-digit phone number';
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 16),
                 Row(

@@ -194,7 +194,7 @@ class _AddDentistScreenState extends State<AddDentistScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  _label('Consultation Fee (\$)'),
+                  _label('Consultation Fee (₹)'),
                   TextField(
                     controller: _feeController,
                     keyboardType: const TextInputType.numberWithOptions(decimal: true),

@@ -35,11 +35,9 @@ async function getDashboardStats() {
     getTodayRevenueSummary(),
   ]);
 
-  // Distinct patients, derived from the appointments collection (there's no
-  // separate Patient model -- patient details are snapshotted per booking).
+
   const distinctPatients = await Appointment.distinct('patientEmail');
 
-  // Soonest appointment still ahead of us today, for the "up next" insight.
   const nextAppointment =
     todaysAppointmentDocs
       .filter((a) => minutesOfDay(a.time) >= nowMinutes)
@@ -60,9 +58,6 @@ async function getDashboardStats() {
   };
 }
 
-// There's no dedicated Patient model in this system -- patient details are
-// captured per-booking on the Appointment document (guest checkout is
-// allowed). We derive a patient directory by grouping appointments by email.
 async function listPatients({ search } = {}) {
   const match = {};
   if (search) {
@@ -96,12 +91,6 @@ function toDateStr(d) {
   return d.toISOString().slice(0, 10);
 }
 
-// Parse a "YYYY-MM-DD" string as a UTC calendar date (not local time). Using
-// `new Date(`${dateStr}T00:00:00`)` here instead would parse as *local*
-// midnight; round-tripping that through `toISOString()` (which is always
-// UTC) then silently shifts the date by a day on any server whose local
-// timezone is ahead of UTC (e.g. IST, UTC+5:30) -- which was the root cause
-// of the weekly revenue buckets coming back empty/misaligned.
 function parseDateStr(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number);
   return new Date(Date.UTC(y, m - 1, d));
@@ -117,8 +106,7 @@ function shortWeekday(dateStr) {
   return parseDateStr(dateStr).toLocaleDateString('en-US', { weekday: 'short', timeZone: 'UTC' });
 }
 
-// Buckets a HH:mm time string into one of the clinic's rough opening-hour
-// slots, for the "Day" view of the revenue chart.
+
 const DAY_BUCKETS = [
   { label: '8AM', from: 0, to: 599 },
   { label: '10AM', from: 600, to: 719 },
@@ -133,11 +121,6 @@ function minutesOfDay(time) {
   return h * 60 + m;
 }
 
-// "Collected" revenue means actual money in hand -- `amountPaid` -- not the
-// full treatment cost (`amount`). This matters now that patients can pay
-// just the consultation fee upfront and settle the rest later: a
-// 'partially_paid' appointment still contributes its collected portion to
-// revenue, it just doesn't contribute the remaining balanceDue.
 const COLLECTED_MATCH = { amountPaid: { $gt: 0 } };
 
 async function sumCollected(query) {
@@ -220,8 +203,7 @@ async function getRevenue({ period = 'week' } = {}) {
       { $sort: { total: -1 } },
       { $limit: 5 },
     ]),
-    // "Which service, performed by which doctor, earned how much" -- powers
-    // the detailed breakdown table on the Revenue screen.
+
     Appointment.aggregate([
       { $match: { ...rangeQuery, ...COLLECTED_MATCH } },
       {
@@ -234,9 +216,7 @@ async function getRevenue({ period = 'week' } = {}) {
       { $sort: { amount: -1 } },
       { $limit: 20 },
     ]),
-    // Full-payment vs consultation-fee-only bookings, and how much is still
-    // outstanding from the latter -- surfaces the new booking feature on the
-    // Revenue screen.
+
     Appointment.aggregate([
       { $match: { ...rangeQuery, status: { $ne: 'Cancelled' } } },
       {

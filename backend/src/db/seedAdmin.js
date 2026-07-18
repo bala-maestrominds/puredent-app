@@ -3,12 +3,6 @@ import mongoose from 'mongoose';
 import { connectDB } from '../config/db.js';
 import { User } from '../models/user.model.js';
 
-// Creates (or resets) a single admin account used to log into the Flutter
-// admin app. Safe to re-run: it upserts rather than duplicating.
-//
-// Usage:
-//   node src/db/seedAdmin.js
-//   node src/db/seedAdmin.js --email admin@puredent.com --password Something123 --name "Clinic Admin"
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -25,8 +19,8 @@ function parseArgs() {
 async function seedAdmin() {
   const { email, password, name } = parseArgs();
 
-  const adminEmail = (email || process.env.ADMIN_SEED_EMAIL || 'admin@puredent.com').toLowerCase().trim();
-  const adminPassword = password || process.env.ADMIN_SEED_PASSWORD || 'PureDent@2024';
+  const adminEmail = (email || process.env.ADMIN_SEED_EMAIL || 'admin@gmail.com').toLowerCase().trim();
+  const adminPassword = password || process.env.ADMIN_SEED_PASSWORD || 'puredentadmin';
   const adminName = name || 'Clinic Admin';
 
   if (adminPassword.length < 8) {

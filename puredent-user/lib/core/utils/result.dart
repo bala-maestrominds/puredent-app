@@ -1,7 +1,6 @@
 import '../errors/failure.dart';
 
-/// Minimal Either-style result so repositories don't throw across layers.
-/// Avoids pulling in `dartz`/`fpdart` just for this.
+
 sealed class Result<T> {
   const Result();
 

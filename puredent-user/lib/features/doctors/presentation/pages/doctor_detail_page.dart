@@ -89,7 +89,7 @@ class _DoctorDetailPageState extends State<DoctorDetailPage> {
                           _Stat(
                               label: 'Consult Fee',
                               value:
-                                  '\$${kConsultationFeeAmount.toStringAsFixed(0)}'),
+                                  '₹${kConsultationFeeAmount.toStringAsFixed(0)}'),
                         ],
                       ),
                       const SizedBox(height: AppSpacing.lg),

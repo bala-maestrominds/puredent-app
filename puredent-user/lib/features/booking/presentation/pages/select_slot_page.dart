@@ -44,7 +44,7 @@ class _SelectSlotPageState extends State<SelectSlotPage> {
     if (!mounted) return;
     result.when(
       success: (slots) => setState(() {
-        _slots = slots;
+        _slots = _filterPastSlots(slots);
         _loading = false;
       }),
       failure: (f) => setState(() {
@@ -159,6 +159,22 @@ class _SelectSlotPageState extends State<SelectSlotPage> {
         );
       },
     );
+  }
+
+
+  List<String> _filterPastSlots(List<String> slots) {
+    final now = DateTime.now();
+    final isToday = _selectedDate.year == now.year &&
+        _selectedDate.month == now.month &&
+        _selectedDate.day == now.day;
+    if (!isToday) return slots;
+
+    return slots.where((slot) {
+      final parts = slot.split(':');
+      final slotMinutes = int.parse(parts[0]) * 60 + int.parse(parts[1]);
+      final nowMinutes = now.hour * 60 + now.minute;
+      return slotMinutes > nowMinutes;
+    }).toList();
   }
 
   String _formatTime(String hhmm) {

@@ -441,7 +441,7 @@ class _AppointmentDetailSheet extends StatelessWidget {
           const SizedBox(height: 20),
           Row(
             children: [
-              Expanded(child: _statBox('Total Cost', '\$${a.amount}')),
+              Expanded(child: _statBox('Total Cost', '₹${a.amount}')),
               const SizedBox(width: 10),
               Expanded(
                 child: _statBox(
@@ -467,7 +467,7 @@ class _AppointmentDetailSheet extends StatelessWidget {
                       children: [
                         const Text('Consultation Fee Only', style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700)),
                         Text(
-                          'Paid \$${a.amountPaid} of \$${a.amount} · \$${a.balanceDue} due at visit',
+                          'Paid ₹${a.amountPaid} of ₹${a.amount} · ₹${a.balanceDue} due at visit',
                           style: const TextStyle(fontSize: 11, color: AppColors.onSurfaceVariant),
                         ),
                       ],

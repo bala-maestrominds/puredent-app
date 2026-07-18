@@ -10,7 +10,7 @@ export const createAppointmentSchema = z.object({
 
   patientName: z.string().min(2).max(120),
   patientEmail: z.string().email(),
-  patientPhone: z.string().min(6).max(20),
+  patientPhone: z.string().regex(/^\d{10}$/, 'Phone number must be exactly 10 digits'),
   patientAge: z.coerce.number().int().min(0).max(130).optional(),
   patientGender: z.enum(['Male', 'Female', 'Other']).optional(),
   notes: z.string().max(1000).optional().default(''),

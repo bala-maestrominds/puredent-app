@@ -140,9 +140,9 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                         Column(
                                           crossAxisAlignment: CrossAxisAlignment.end,
                                           children: [
-                                            Text('\$${p.amountPaid}', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
+                                            Text('₹${p.amountPaid}', style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16)),
                                             if (p.status != 'Paid')
-                                              Text('of \$${p.amount}', style: const TextStyle(fontSize: 10, color: AppColors.onSurfaceVariant)),
+                                              Text('of ₹${p.amount}', style: const TextStyle(fontSize: 10, color: AppColors.onSurfaceVariant)),
                                             const SizedBox(height: 4),
                                             Container(
                                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -164,7 +164,7 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                                           const SizedBox(width: 6),
                                           Expanded(
                                             child: Text(
-                                              'Consultation fee only — \$${p.balanceDue} due at visit',
+                                              'Consultation fee only — ₹${p.balanceDue} due at visit',
                                               style: const TextStyle(fontSize: 11, color: AppColors.onSurfaceVariant),
                                             ),
                                           ),
@@ -234,7 +234,7 @@ class _TotalCard extends StatelessWidget {
             duration: const Duration(milliseconds: 800),
             curve: Curves.easeOutCubic,
             builder: (context, animatedValue, child) => Text(
-              '\$${animatedValue.toInt()}',
+              '₹${animatedValue.toInt()}',
               style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16, color: color),
             ),
           ),

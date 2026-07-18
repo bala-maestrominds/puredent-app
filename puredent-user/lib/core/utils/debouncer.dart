@@ -1,13 +1,5 @@
 import 'dart:async';
 
-/// Generic debouncer used for search fields / any rapid-fire user input that
-/// should not trigger a network call on every keystroke.
-///
-/// Usage:
-/// ```dart
-/// final _debouncer = Debouncer(delay: AppConfig.searchDebounce);
-/// onChanged: (value) => _debouncer.run(() => bloc.add(SearchChanged(value)));
-/// ```
 class Debouncer {
   Debouncer({this.delay = const Duration(milliseconds: 400)});
 

@@ -10,8 +10,6 @@ async function listServices({ category } = {}) {
   return Service.find({}).sort({ name: 1 });
 }
 
-// Finds the top-rated active doctor who offers the given service, so the
-// service detail page can show a "best specialist" card.
 async function findBestSpecialist(serviceId) {
   return Doctor.findOne({ services: serviceId, isActive: true })
     .sort({ rating: -1, reviews: -1 })

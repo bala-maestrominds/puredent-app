@@ -20,7 +20,6 @@ const serviceSchema = new mongoose.Schema(
     priceFrom: { type: Number, min: 0, default: null },
     durationMinutes: { type: Number, required: true, min: 5 },
     isActive: { type: Boolean, default: true },
-    // --- New fields for the service detail page ---
     keyBenefits: { type: [String], default: [] },
     process: { type: [processStepSchema], default: [] },
   },

@@ -229,7 +229,7 @@ class _AdminLoginScreenState extends State<AdminLoginScreen> with TickerProvider
                     ),
                     const SizedBox(height: 24),
                     Text(
-                      '© 2024 PureDent Clinic Management. Authorized personnel only.',
+                      '© 2026 PureDent Clinic Management. Authorized personnel only.',
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(fontSize: 12),
                     ),

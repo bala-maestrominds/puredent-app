@@ -48,109 +48,223 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Create account')),
-      body: BlocListener<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is AuthFailure) {
-            ScaffoldMessenger.of(context)
-              ..hideCurrentSnackBar()
-              ..showSnackBar(SnackBar(content: Text(state.failure.message)));
-          }
-          if (state is AuthAuthenticated) {
-            context.go('/home');
-          }
-        },
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(AppSpacing.marginMobile),
-            child: Form(
-              key: _formKey,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Join PureDent', style: Theme.of(context).textTheme.headlineMedium),
-                  const SizedBox(height: 6),
-                  Text('Create an account to book and track appointments.',
-                      style: Theme.of(context).textTheme.bodyMedium),
-                  const SizedBox(height: 28),
-                  AppTextField(
-                    label: 'Full name',
-                    hint: 'John Doe',
-                    controller: _nameController,
-                    prefixIcon: Icons.person_outline_rounded,
-                    textInputAction: TextInputAction.next,
-                    validator: (v) => (v == null || v.trim().length < 2) ? 'Enter your full name' : null,
-                  ),
-                  const SizedBox(height: 16),
-                  AppTextField(
-                    label: 'Email',
-                    hint: 'john@example.com',
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    prefixIcon: Icons.mail_outline_rounded,
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) return 'Email is required';
-                      final regex = RegExp(r'^[\w\.\-]+@[\w\-]+\.[\w\.\-]+$');
-                      if (!regex.hasMatch(value.trim())) return 'Enter a valid email';
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  AppTextField(
-                    label: 'Phone (optional)',
-                    hint: '+1 (555) 000-0000',
-                    controller: _phoneController,
-                    keyboardType: TextInputType.phone,
-                    prefixIcon: Icons.phone_outlined,
-                    textInputAction: TextInputAction.next,
-                  ),
-                  const SizedBox(height: 16),
-                  AppTextField(
-                    label: 'Password',
-                    hint: 'At least 8 characters',
-                    controller: _passwordController,
-                    obscureText: true,
-                    prefixIcon: Icons.lock_outline_rounded,
-                    textInputAction: TextInputAction.next,
-                    validator: (v) => (v == null || v.length < 8) ? 'Minimum 8 characters' : null,
-                  ),
-                  const SizedBox(height: 16),
-                  AppTextField(
-                    label: 'Confirm password',
-                    hint: 'Re-enter your password',
-                    controller: _confirmController,
-                    obscureText: true,
-                    prefixIcon: Icons.lock_outline_rounded,
-                    textInputAction: TextInputAction.done,
-                    validator: (v) => (v != _passwordController.text) ? 'Passwords do not match' : null,
-                  ),
-                  const SizedBox(height: 28),
-                  BlocBuilder<AuthBloc, AuthState>(
-                    builder: (context, state) {
-                      return AppPrimaryButton(
-                        label: 'Create account',
-                        isLoading: state is AuthLoading,
-                        onPressed: _submit,
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: AppColors.surface,
+      appBar: AppBar(
+        title: const Text('Create account'),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [
+          // Background blobs
+          Positioned(
+            top: -140,
+            left: -160,
+            child: _blob(360, AppColors.surfaceContainerHigh),
+          ),
+          Positioned(
+            bottom: -120,
+            right: -140,
+            child: _blob(320, AppColors.surfaceContainerHigh),
+          ),
+          BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is AuthFailure) {
+                ScaffoldMessenger.of(context)
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                      SnackBar(content: Text(state.failure.message)));
+              }
+              if (state is AuthAuthenticated) {
+                context.go('/home');
+              }
+            },
+            child: SafeArea(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.symmetric(
+                  horizontal: AppSpacing.marginMobile,
+                  vertical: 24,
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
                     children: [
-                      Text('Already have an account? ', style: Theme.of(context).textTheme.bodyMedium),
-                      GestureDetector(
-                        onTap: () => context.pop(),
-                        child: const Text('Log in', style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.w600)),
+                      const SizedBox(height: 8),
+                      // Icon badge
+                      Container(
+                        width: 88,
+                        height: 88,
+                        decoration: BoxDecoration(
+                          gradient: AppColors.heroGradient,
+                          borderRadius: BorderRadius.circular(24),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColors.primary.withOpacity(0.25),
+                              blurRadius: 24,
+                              offset: const Offset(0, 10),
+                            ),
+                          ],
+                        ),
+                        padding: const EdgeInsets.all(8),
+                        child: Image.asset(
+                          'assets/icons/app.png',
+                          color: Colors
+                              .white, // remove this line if your logo is multi-color
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      Text(
+                        'Join PureDent',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.w800,
+                              color: AppColors.primary,
+                              fontSize: 32,
+                            ),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Create an account to book and track appointments.',
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: AppColors.onSurfaceVariant,
+                              fontSize: 16,
+                            ),
+                      ),
+                      const SizedBox(height: 32),
+                      // Card wrapping the form fields
+                      Container(
+                        width: double.infinity,
+                        padding: const EdgeInsets.all(24),
+                        decoration: BoxDecoration(
+                          color: AppColors.surfaceContainerLowest,
+                          borderRadius: BorderRadius.circular(28),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.05),
+                              blurRadius: 24,
+                              offset: const Offset(0, 8),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppTextField(
+                              label: 'Full name',
+                              hint: 'John Doe',
+                              controller: _nameController,
+                              prefixIcon: Icons.person_outline_rounded,
+                              textInputAction: TextInputAction.next,
+                              validator: (v) =>
+                                  (v == null || v.trim().length < 2)
+                                      ? 'Enter your full name'
+                                      : null,
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextField(
+                              label: 'Email',
+                              hint: 'john@example.com',
+                              controller: _emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              prefixIcon: Icons.mail_outline_rounded,
+                              textInputAction: TextInputAction.next,
+                              validator: (value) {
+                                if (value == null || value.trim().isEmpty) {
+                                  return 'Email is required';
+                                }
+                                final regex =
+                                    RegExp(r'^[\w\.\-]+@[\w\-]+\.[\w\.\-]+$');
+                                if (!regex.hasMatch(value.trim())) {
+                                  return 'Enter a valid email';
+                                }
+                                return null;
+                              },
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextField(
+                              label: 'Phone (optional)',
+                              hint: '+91 98765 43210',
+                              controller: _phoneController,
+                              keyboardType: TextInputType.phone,
+                              prefixIcon: Icons.phone_outlined,
+                              textInputAction: TextInputAction.next,
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextField(
+                              label: 'Password',
+                              hint: 'At least 8 characters',
+                              controller: _passwordController,
+                              obscureText: true,
+                              prefixIcon: Icons.lock_outline_rounded,
+                              textInputAction: TextInputAction.next,
+                              validator: (v) => (v == null || v.length < 8)
+                                  ? 'Minimum 8 characters'
+                                  : null,
+                            ),
+                            const SizedBox(height: 16),
+                            AppTextField(
+                              label: 'Confirm password',
+                              hint: 'Re-enter your password',
+                              controller: _confirmController,
+                              obscureText: true,
+                              prefixIcon: Icons.lock_outline_rounded,
+                              textInputAction: TextInputAction.done,
+                              validator: (v) => (v != _passwordController.text)
+                                  ? 'Passwords do not match'
+                                  : null,
+                            ),
+                            const SizedBox(height: 24),
+                            BlocBuilder<AuthBloc, AuthState>(
+                              builder: (context, state) {
+                                return AppPrimaryButton(
+                                  label: 'Create account',
+                                  isLoading: state is AuthLoading,
+                                  onPressed: _submit,
+                                );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('Already have an account? ',
+                              style: Theme.of(context).textTheme.bodyMedium),
+                          GestureDetector(
+                            onTap: () => context.pop(),
+                            child: const Text('Log in',
+                                style: TextStyle(
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.w600)),
+                          ),
+                        ],
                       ),
                     ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
-        ),
+        ],
+      ),
+    );
+  }
+
+  Widget _blob(double size, Color color) {
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.5),
+        shape: BoxShape.circle,
       ),
     );
   }

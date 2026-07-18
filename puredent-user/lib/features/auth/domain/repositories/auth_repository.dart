@@ -13,8 +13,6 @@ abstract class AuthRepository {
 
   Future<Result<void>> logout();
 
-  /// Reads the currently cached/stored session without a network call,
-  /// used on app start to decide splash -> home vs splash -> login.
   Future<UserEntity?> restoreSession();
 
   Future<Result<UserEntity>> fetchProfile();
